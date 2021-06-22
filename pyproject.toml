@@ -8,6 +8,7 @@ authors = ["vvveracruz <login@vgg.cz>"]
 python = ">=3.7.1,<4.0"
 pandas = "^1.2.5"
 matplotlib = "^3.4.2"
+ipython = "^7.24.1"
 
 [tool.poetry.dev-dependencies]
 
