@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "nt-redaction-back-end"
+version = "0.1.0"
+description = ""
+authors = ["vvveracruz <login@vgg.cz>"]
+
+[tool.poetry.dependencies]
+python = ">=3.7.1,<4.0"
+pandas = "^1.2.5"
+matplotlib = "^3.4.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
