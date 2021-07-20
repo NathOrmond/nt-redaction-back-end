@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 def friendly_table_output(array, a, b):
     df = pd.DataFrame(array)
     df=df.set_index([list(a)])
@@ -64,3 +67,7 @@ def get_distances(func, sources, targets=[]):
             df[i][j] = func(i, j)
     
     return df
+
+if __name__=="__main__":
+    print(levenschtein_distance_basic('kitten', 'sitting', output_distance=False, output_table=True))
+    
