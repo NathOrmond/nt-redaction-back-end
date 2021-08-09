@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-def friendly_table_output(array, a, b):
+def friendly_table_outputter(array, a, b):
     df = pd.DataFrame(array)
     df=df.set_index([list(a)])
     df=df.set_axis([list(b)], axis=1)
@@ -39,7 +39,7 @@ def levenschtein_distance_basic(a, b, output_distance=True, output_table=False):
             )
             
     if output_table:
-        return friendly_table_output(D, a, b)
+        return friendly_table_outputter(D, a, b)
     if output_distance:
         return D[-1][-1]
 
@@ -50,9 +50,9 @@ def get_distances(func, sources, targets=[]):
     
     Inputs
     
-    func:    the distance calculator function to use
-    sources: list of strings
-    targets: empty list or list of strings
+    func:       the distance calculator function to use
+    sources:    list of strings
+    targets:    empty list or list of strings
     
     Outputs:
     pd.DataFrame object with rows = sources and columns = targets.

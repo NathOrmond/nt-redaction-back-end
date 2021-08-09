@@ -11,6 +11,7 @@ matplotlib = "^3.4.2"
 ipython = "^7.24.1"
 tabulate = "^0.8.9"
 numpy = "^1.21.1"
+jupyter = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 
