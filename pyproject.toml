@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "nt-redaction-back-end"
+name = "redactioncalculator"
 version = "0.1.0"
 description = ""
-authors = ["vvveracruz <login@vgg.cz>"]
+authors = ["vvveracruz <me@vgg.cz>"]
 
 [tool.poetry.dependencies]
 python = ">=3.7.1,<4.0"
