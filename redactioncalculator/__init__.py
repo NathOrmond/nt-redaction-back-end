@@ -1,1 +1,2 @@
-from redactioncalculator.filemapper import FileMapper
+from redactioncalculator.mapper import Mapper
+from redactioncalculator.outputmanager import OutputManager

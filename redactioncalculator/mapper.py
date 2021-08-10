@@ -1,21 +1,16 @@
-import os
 from datetime import datetime
-import pytz
 import random
 import string
 
-class FileMapper():
+class Mapper():
     '''This class will map every unique word in a file to a randomly
     assigned unique id.'''
-    
-    # _default_out_dir=os.getcwd()+'/output/'+datetime.now(pytz.timezone('Europe/London')).strftime('%Y-%m-%d')+'/'
     
     def __init__(self, in_dir):
         self.in_dir=in_dir    # don't want to be able to modify this
         self._words={} 
         self._mapped_text = self.text_mapper()
         
-    
     @property
     def mapped_text(self):
         return self._mapped_text
@@ -56,5 +51,5 @@ class FileMapper():
         return ' '.join(mapped_wordlist)
     
 if __name__=='__main__':
-    f=FileMapper("../tests/a_sentence.txt")
+    f=Mapper("../tests/a_sentence.txt")
     print(f.mapped_text)
