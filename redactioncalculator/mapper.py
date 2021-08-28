@@ -1,7 +1,7 @@
 import string
 import random
 
-def text_to_wordlist(in_dir):
+def file_to_wordlist(in_dir):
     '''
     Reads file from in_dir and returns a list with all words in order, 
     including duplicates.
@@ -48,3 +48,10 @@ def mapper(wordlist, dictionary={}):
             dictionary[word]=c
         out+=dictionary[word]
     return out, dictionary
+
+def unmapper(mapping_dict, mapped_text):
+    out=[]
+    mapping_dict={y:x for x,y in mapping_dict.items()} # switching keys and items
+    for char in mapped_text:
+        out.append(mapping_dict[char])
+    return out
