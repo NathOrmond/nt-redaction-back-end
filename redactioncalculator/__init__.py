@@ -1,2 +1,0 @@
-from redactioncalculator.mapper import Mapper
-from redactioncalculator.outputmanager import OutputManager

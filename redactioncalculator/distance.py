@@ -1,4 +1,4 @@
-from main import levenschtein_distance_basic
+from .variations import levenschtein_distance_basic
 import pandas as pd
 
 _default_distance_func=levenschtein_distance_basic
@@ -28,7 +28,3 @@ def get_distances(sources, targets=[]):
             df[i][j] = _default_distance_func(i, j)
     
     return df
-
-if __name__=="__main__":
-    sources=['kitten', 'sitting', 'mitten']
-    print(get_distances(sources))
