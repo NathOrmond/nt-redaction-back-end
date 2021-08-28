@@ -12,7 +12,7 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 
 There's more installation options in the docs linked above.
 
-Once installed you can easily install all the dependencies from the lock file. Run
+Once installed you can easily install all the dependencies from the toml file. Run
 ```
 poetry install
 ```
