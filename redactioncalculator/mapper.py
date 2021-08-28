@@ -1,55 +1,50 @@
-from datetime import datetime
-import random
 import string
+import random
 
-class Mapper():
-    '''This class will map every unique word in a file to a randomly
-    assigned unique id.'''
+def text_to_wordlist(in_dir):
+    '''
+    Reads file from in_dir and returns a list with all words in order, 
+    including duplicates.
+    '''
+    words = []
+    with open(in_dir) as file:
+        for line in file:
+            line=line.strip()
+            for word in line.split(' '):
+                words.append(word)
+    return words
+
+def mapper(wordlist, dictionary={}):
+    '''
+    Returns a string with the words from wordlist mapped to unique characters.
     
-    def __init__(self, in_dir):
-        self.in_dir=in_dir    # don't want to be able to modify this
-        self._words={} 
-        self._mapped_text = self.text_mapper()
-        
-    @property
-    def mapped_text(self):
-        return self._mapped_text
+    Inputs
+    ------
+    wordlist:    lst    A list of words.
+    dictionary:  dict   A dictionary mapping words to characters, to be used if multiple
+                        wordlists need to be encoded using the same mapping.
     
-    def _text_to_wordlist(self, in_dir):
-        '''Reads file from in_dir and returns a list with all words in order, 
-        including duplicates.'''
-        words = []
-        with open(in_dir) as file:
-            for line in file:
-                line=line.strip()
-                for word in line.split(' '):
-                    words.append(word)
-        return words
+    Returns
+    -------
+    str, dict           A string containing the mapped words as characters and a dictionary
+                        containing the mapping.
     
-    def _word_id(self, word):
-        '''
-        Gets a word id for every unique word if it is not already present in 
-        _words. Once assigned it is also saved in _words.
-        '''
-        if word not in self._words.keys():
-            # this method of getting ids can encode 218340106 million words (english has 1 million)
-            lst = [random.choice(string.ascii_letters + string.digits) for n in range(8)]
-            s = "".join(lst)
-            word_id='word_'+s
-            self._words[word]=word_id
-        return self._words[word]
+    Raises
+    ------
+    RuntimeError: if there aren't enough carracters to encode the wordlist.
+    '''
+    out=''
+    chars=string.ascii_letters+string.digits
+    wordlist=[word.lower() for word in wordlist]
+    dictionary=dictionary # flushes any previous local dictionaries
     
-    def text_mapper(self):
-        '''
-        Maps a text file to a string replacing words with their unique ids.
-        '''
-        wordlist=self._text_to_wordlist(self.in_dir)
-        mapped_wordlist=[]
-        for word in wordlist:
-            mapped_word=self._word_id(word)
-            mapped_wordlist.append(mapped_word)
-        return ' '.join(mapped_wordlist)
+    if len(wordlist) > len(chars):
+        raise RuntimeError('The wordlist is too long and cannot be encoded by characters only.')
     
-if __name__=='__main__':
-    f=Mapper("../tests/a_sentence.txt")
-    print(f.mapped_text)
+    for word in wordlist:
+        if word not in dictionary.keys():
+            c=random.choice(chars)
+            chars=chars.replace(c, "") #ensuring mapping uniqueness
+            dictionary[word]=c
+        out+=dictionary[word]
+    return out, dictionary
