@@ -16,7 +16,7 @@ Once installed you can easily install all the dependencies from the lock file. R
 ```
 poetry install
 ```
-ps. don't push the lock file to the repo
+ps. don't push the lock file to the repo.
 
 To add a new dependency (eg: flask), run:
 ```
