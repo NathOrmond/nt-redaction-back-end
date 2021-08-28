@@ -33,3 +33,7 @@ python api/api.py
 ```
 You don't need to specify the python version because that's already managed by poetry!
 
+!! The python version has changed to >=3.8
+- delete your lock file
+- `poetry env remove python3`
+- `poetry install`
