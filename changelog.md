@@ -2,6 +2,12 @@
 
 ## v0
 
+### v0.1.4
+| Tested Locally | Bumped & built |
+|:-:|:-:|
+| ✔️ | ✔️ |
+- Wrapper for get distances that is able to process filepaths directly
+
 ### v0.1.3
 | Tested Locally | Bumped & built |
 |:-:|:-:|
