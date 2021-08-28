@@ -5,7 +5,7 @@ description = ""
 authors = ["vvveracruz <me@vgg.cz>", "nathanormond <nath.m.ormond@gmailcom>"]
 
 [tool.poetry.dependencies]
-python = ">=3.7.1,<4.0"
+python = ">=3.8,<4.0"
 pandas = "^1.2.5"
 matplotlib = "^3.4.2"
 ipython = "^7.24.1"
