@@ -1,36 +1,45 @@
 import flask
 from flask import request, jsonify
+import os
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-
-# Create some test data for our catalog in the form of a list of dictionaries.
-mockData = {
-    'levenshtein': {
-        'mss': ['001', '002', '003'],
-        'values': {
-            'x': { 
-                'label': 'x_values',
-                'values': [1, 2, 3, 4, 5]
-            },
-            'y': {
-                'label': 'y_values',
-                'values': [2, 4, 5, 6, 8]
-            }
-        }
-    }
-}
-
 
 @app.route('/', methods=['GET'])
 def home():
     return '''<h1>New Testament Helper API</h1>
 <p>A prototype API for New Testament Studies.</p>'''
 
+# Route to return all available texts that can be compared
+@app.route('/texts', methods=['GET'])
+def texts():
+    # TODO Rather than using local files use a database
+    return jsonify(os.listdir('./resources'))
 
-# A route to return all of the available entries in our catalog.
-@app.route('/all', methods=['GET'])
-def api_all():
-    return jsonify(mockData)
+@app.route('/levenshtein', methods=['GET'])
+def levenshtein():
+    document1 = request.args.get('document1')
+    document2 = request.args.get('document2')
+    print('Query')
+    print(document1)
+    print(document2)
+    # TODO Calculate leventshtein distance and return in json response
+    arr = os.listdir('./resources')
+    response = {
+        'levenshtein': {
+            'mss': arr,
+            'values': {
+                'x': { 
+                    'label': arr[0],
+                    'values': [1,2,3]
+                },
+                'y': {
+                    'label': arr[1],
+                    'values': [1,2,3]
+                }
+            }
+        }
+    }
+    return jsonify(response)
 
 app.run()
